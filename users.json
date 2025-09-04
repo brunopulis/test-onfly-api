@@ -1,0 +1,537 @@
+{
+	"info": {
+		"_postman_id": "79ba092d-ced7-40d8-baf5-92f60bbd4d06",
+		"name": "users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1708471",
+		"_collection_link": "https://www.postman.com/workspace/testing~69bc3b68-8885-48e4-a317-e4c2edf0cd19/collection/1708471-79ba092d-ced7-40d8-baf5-92f60bbd4d06?action=share&source=collection_link&creator=1708471"
+	},
+	"item": [
+		{
+			"name": "Deve retornar todos os usuários",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time menor que 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Retorna array de usuários\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Usuários têm campos obrigatórios\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    if(jsonData.length > 0) {\r",
+							"        pm.expect(jsonData[0]).to.have.property('id');\r",
+							"        pm.expect(jsonData[0]).to.have.property('name');\r",
+							"        pm.expect(jsonData[0]).to.have.property('email');\r",
+							"        pm.expect(jsonData[0]).to.have.property('gender');\r",
+							"        pm.expect(jsonData[0]).to.have.property('status');\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type é application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Deve retornar todos os usuários",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Thu, 04 Sep 2025 16:14:44 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=0, private, must-revalidate"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"14bdbe14869e9e897e3fe1d7e74f8fa2\""
+						},
+						{
+							"key": "feature-policy",
+							"value": "camera 'none'; gyroscope 'none'; microphone 'none'; usb 'none'; fullscreen 'self'"
+						},
+						{
+							"key": "referrer-policy",
+							"value": "strict-origin-when-cross-origin"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+						},
+						{
+							"key": "vary",
+							"value": "Origin"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-download-options",
+							"value": "noopen"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-links-current",
+							"value": "https://gorest.co.in/public/v2/users?page=1"
+						},
+						{
+							"key": "x-links-next",
+							"value": "https://gorest.co.in/public/v2/users?page=2"
+						},
+						{
+							"key": "x-links-previous",
+							"value": ""
+						},
+						{
+							"key": "x-pagination-limit",
+							"value": "10"
+						},
+						{
+							"key": "x-pagination-page",
+							"value": "1"
+						},
+						{
+							"key": "x-pagination-pages",
+							"value": "296"
+						},
+						{
+							"key": "x-pagination-total",
+							"value": "2957"
+						},
+						{
+							"key": "x-permitted-cross-domain-policies",
+							"value": "none"
+						},
+						{
+							"key": "x-request-id",
+							"value": "c2a20cd5-c14a-4338-887b-6b5aaeba5b52"
+						},
+						{
+							"key": "x-runtime",
+							"value": "0.021785"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "0"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=yEe9VBqLT6KhUEC5BoLYp9C9IlwkTtBUPHYHkWmgRvHnP6K4dsW%2FKFjaZuidpuAYYbMmkTwVPHhk0YWhrsdF9z6AStDvUG53g3PyBw%3D%3D\"}]}"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "_gorest_session=SjMPQFSrDA%2FZ6hxs4ITq5W60VxtuC5nQLMFg19p5OhD%2FPdVW7LgWZvvD%2BA3MhI55d5LhQayTWt8C3xE45HwCPbeJUf%2B0HcywlttgrMwR%2BFX6dQMZFvn%2F9G9uCMjDFkhfJm69qYjsObE7S0KYWWOZGQ0qiRQf%2F%2FbhNNz0zGJS3fxvPEia00KD4hdfhX3uKZ6CmWlc4MlCv1%2BTkl%2FBvNNdAhUJf%2Bk5azn8r7b84h87lvyDXUDEdFVMNKtkAXF38d9sK4zrChpovS3pyxpDvFj1Dt8mTfXkUJM%3D--WWxWY5cz8GFiUFf1--ukUJ3EBdHpPa9nTpXHgaaA%3D%3D; HttpOnly; SameSite=Lax; Path=/"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "979ec8108b59f18e-GRU"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 8103042,\n        \"name\": \"Vrund Ahuja\",\n        \"email\": \"ahuja_vrund@dietrich.test\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8103041,\n        \"name\": \"Chandrabhaga Marar\",\n        \"email\": \"chandrabhaga_marar@reichel.example\",\n        \"gender\": \"male\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8103040,\n        \"name\": \"Rajendra Jha\",\n        \"email\": \"jha_rajendra@kub.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8103039,\n        \"name\": \"Bhupati Marar\",\n        \"email\": \"bhupati_marar@torp.test\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8103038,\n        \"name\": \"Jai Kaul\",\n        \"email\": \"jai_kaul@gorczany.example\",\n        \"gender\": \"female\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8103037,\n        \"name\": \"Balagopal Shukla\",\n        \"email\": \"shukla_balagopal@wilkinson.test\",\n        \"gender\": \"female\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8103036,\n        \"name\": \"Mrs. Dipesh Mahajan\",\n        \"email\": \"mahajan_dipesh_mrs@macejkovic.example\",\n        \"gender\": \"female\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8103035,\n        \"name\": \"Karthik Abbott\",\n        \"email\": \"abbott_karthik@schaefer.example\",\n        \"gender\": \"male\",\n        \"status\": \"active\"\n    },\n    {\n        \"id\": 8103034,\n        \"name\": \"Aayushmaan Jha I\",\n        \"email\": \"i_jha_aayushmaan@leffler.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    },\n    {\n        \"id\": 8103033,\n        \"name\": \"Bhuvanesh Verma\",\n        \"email\": \"verma_bhuvanesh@gusikowski.example\",\n        \"gender\": \"male\",\n        \"status\": \"inactive\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Deve buscar usuário válido por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Retorna objeto único do usuário\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an('object');\r",
+							"    pm.expect(jsonData).to.not.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Usuário tem todos os campos obrigatórios\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('id');\r",
+							"    pm.expect(jsonData).to.have.property('name');\r",
+							"    pm.expect(jsonData).to.have.property('email');\r",
+							"    pm.expect(jsonData).to.have.property('gender');\r",
+							"    pm.expect(jsonData).to.have.property('status');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Email tem formato válido\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\r",
+							"    pm.expect(emailRegex.test(jsonData.email)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Gender tem valor válido\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(['male', 'female']).to.include(jsonData.gender);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status tem valor válido\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(['active', 'inactive']).to.include(jsonData.status);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/8103044",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"8103044"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deve buscar com filtros (gender e status)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code é 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Retorna array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Todos usuários têm status 'active'\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    jsonData.forEach(function(user) {\r",
+							"        pm.expect(user.status).to.equal('active');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Todos usuários têm gender 'male'\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    jsonData.forEach(function(user) {\r",
+							"        pm.expect(user.gender).to.equal('male');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time menor que 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"// Salvar um ID de usuário para usar em outros testes\r",
+							"pm.test(\"Salvar ID do primeiro usuário para próximos testes\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    if(jsonData.length > 0) {\r",
+							"        pm.globals.set(\"user_id\", jsonData[0].id);\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users?status=active&gender=male",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "active"
+						},
+						{
+							"key": "gender",
+							"value": "male"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca ID inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code é 404 (Not Found)\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time menor que 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Retorna mensagem de erro apropriada\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property('message');\r",
+							"    pm.expect(jsonData.message.toLowerCase()).to.include('not found');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type é application/json\", function () {\r",
+							"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Não retorna dados do usuário\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.not.have.property('name');\r",
+							"    pm.expect(jsonData).to.not.have.property('email');\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users/999999999",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"999999999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Valida o schema JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response é um array\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Array não está vazio\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.be.greaterThan(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cada item tem estrutura correta\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    jsonData.forEach(function(user, index) {\r",
+							"        // Validar que é um objeto\r",
+							"        pm.expect(user, `Usuário ${index} deve ser um objeto`).to.be.an('object');\r",
+							"        \r",
+							"        // Validar campos obrigatórios\r",
+							"        pm.expect(user, `Usuário ${index} deve ter campo 'id'`).to.have.property('id');\r",
+							"        pm.expect(user, `Usuário ${index} deve ter campo 'name'`).to.have.property('name');\r",
+							"        pm.expect(user, `Usuário ${index} deve ter campo 'email'`).to.have.property('email');\r",
+							"        pm.expect(user, `Usuário ${index} deve ter campo 'gender'`).to.have.property('gender');\r",
+							"        pm.expect(user, `Usuário ${index} deve ter campo 'status'`).to.have.property('status');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Tipos de dados estão corretos\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    jsonData.forEach(function(user, index) {\r",
+							"        // Validar tipos\r",
+							"        pm.expect(user.id, `ID do usuário ${index} deve ser número`).to.be.a('number');\r",
+							"        pm.expect(user.name, `Nome do usuário ${index} deve ser string`).to.be.a('string');\r",
+							"        pm.expect(user.email, `Email do usuário ${index} deve ser string`).to.be.a('string');\r",
+							"        pm.expect(user.gender, `Gender do usuário ${index} deve ser string`).to.be.a('string');\r",
+							"        pm.expect(user.status, `Status do usuário ${index} deve ser string`).to.be.a('string');\r",
+							"        \r",
+							"        // Validar que ID é positivo\r",
+							"        pm.expect(user.id, `ID do usuário ${index} deve ser positivo`).to.be.greaterThan(0);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Valores dos campos estão dentro dos padrões\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\r",
+							"    \r",
+							"    jsonData.forEach(function(user, index) {\r",
+							"        // Validar que name não é vazio\r",
+							"        pm.expect(user.name.length, `Nome do usuário ${index} não pode ser vazio`).to.be.greaterThan(0);\r",
+							"        \r",
+							"        // Validar formato do email\r",
+							"        pm.expect(emailRegex.test(user.email), `Email do usuário ${index} deve ter formato válido`).to.be.true;\r",
+							"        \r",
+							"        // Validar valores permitidos para gender\r",
+							"        pm.expect(['male', 'female'], `Gender do usuário ${index} deve ser 'male' ou 'female'`).to.include(user.gender);\r",
+							"        \r",
+							"        // Validar valores permitidos para status\r",
+							"        pm.expect(['active', 'inactive'], `Status do usuário ${index} deve ser 'active' ou 'inactive'`).to.include(user.status);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Não há campos extras não esperados\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var expectedFields = ['id', 'name', 'email', 'gender', 'status'];\r",
+							"    \r",
+							"    jsonData.forEach(function(user, index) {\r",
+							"        var userFields = Object.keys(user);\r",
+							"        var extraFields = userFields.filter(field => !expectedFields.includes(field));\r",
+							"        \r",
+							"        pm.expect(extraFields, `Usuário ${index} não deveria ter campos extras: ${extraFields.join(', ')}`).to.have.lengthOf(0);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
